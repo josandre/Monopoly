@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.23)
+project(Monopoly)
+
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(Monopoly main.cpp  Core/Nodo.cpp Core/Nodo.h)
