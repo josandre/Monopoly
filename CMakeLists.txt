@@ -3,4 +3,4 @@ project(Monopoly)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Monopoly main.cpp  Core/Nodo.cpp Core/Nodo.h)
+add_executable(Monopoly main.cpp  Core/Node.cpp Core/Node.h)

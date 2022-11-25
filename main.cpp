@@ -1,11 +1,12 @@
 #include <iostream>
-#include "Monopoly/Core/Nodo.h"
+#include "Core/Node.h"
+#include "Core/Node.cpp"
+
 using namespace std;
 
 int main() {
-    auto *nodo = new Nodo<int>( 5);
+    auto *node = new Node<int>( 5);
 
-
-    cout << nodo->getData() << std::endl;
+    cout <<  node->getData() << std::endl;
     return 0;
 }

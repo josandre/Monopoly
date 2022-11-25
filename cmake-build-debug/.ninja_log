@@ -1,4 +1,18 @@
 # ninja log v5
-0	365	1669391540781044268	CMakeFiles/Monopoly.dir/main.cpp.o	b58c7679ccb4448d
 366	403	1669391540820583332	Monopoly	67ef2d684c41d457
 1	483	1669392392291740156	CMakeFiles/Monopoly.dir/main.cpp.o	b58c7679ccb4448d
+0	54	1669392953604069535	build.ninja	eefe4be41022df7
+1	349	1669393344399197807	CMakeFiles/Monopoly.dir/main.cpp.o	b58c7679ccb4448d
+0	344	1669393378797357369	CMakeFiles/Monopoly.dir/main.cpp.o	b58c7679ccb4448d
+1	315	1669393445598754219	CMakeFiles/Monopoly.dir/main.cpp.o	b58c7679ccb4448d
+1	26	1669393523741221595	CMakeFiles/Monopoly.dir/Core/Node.cpp.o	b04c401862e42078
+1	207	1669393523921099019	CMakeFiles/Monopoly.dir/main.cpp.o	b58c7679ccb4448d
+1	120	1669393588724109056	CMakeFiles/Monopoly.dir/Core/Node.cpp.o	b04c401862e42078
+1	119	1669393800841451786	CMakeFiles/Monopoly.dir/Core/Node.cpp.o	b04c401862e42078
+3	135	1669393939655534878	CMakeFiles/Monopoly.dir/Core/Node.cpp.o	b04c401862e42078
+3	381	1669393939902130351	CMakeFiles/Monopoly.dir/main.cpp.o	b58c7679ccb4448d
+5	125	1669394100490810075	CMakeFiles/Monopoly.dir/Core/Node.cpp.o	b04c401862e42078
+4	372	1669394100738045761	CMakeFiles/Monopoly.dir/main.cpp.o	b58c7679ccb4448d
+2	117	1669394469592701088	CMakeFiles/Monopoly.dir/Core/Node.cpp.o	b04c401862e42078
+2	330	1669394469805930741	CMakeFiles/Monopoly.dir/main.cpp.o	b58c7679ccb4448d
+330	370	1669394469847314280	Monopoly	8413c0060180dea9
