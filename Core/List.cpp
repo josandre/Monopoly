@@ -34,11 +34,13 @@ bool List<T>::add(T data) {
 
     if(this->head == nullptr){
         this->head = newNode;
+
     }else{
         while (aux->getNext() != nullptr){
             aux = aux->getNext();
         }
 
+        newNode->setBack(aux);
         aux->setNext(newNode);
     }
 
