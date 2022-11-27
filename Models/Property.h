@@ -7,12 +7,14 @@
 using namespace std;
 #include <iostream>
 #include "Spot.h"
+#include "Player.h"
+#include "Enums/Color.h"
 
 class Property : public Spot {
 public:
-    explicit Property(string name, string color, int cost, int rent,
+    explicit Property(string name, Color color, int cost, int rent,
                        int mortgage, int costHouse, int costHotel, int costUnMortgage);
-    string getColor();
+    Color getColor();
     string toString();
     int getCost();
     int getRent();
@@ -24,9 +26,11 @@ public:
     int getCostHouse();
     int getCostHotel();
     int getCostUnMortgage();
+    Player *getOwner();
+    void setOwner(Player *);
 
 private:
-    string color;
+    Color color;
     int cost;
     int rent;
     int amountHouses;
@@ -35,7 +39,7 @@ private:
     int costHouse;
     int costHotel;
     int costUnmortgage;
-
+    Player *owner;
 
 };
 

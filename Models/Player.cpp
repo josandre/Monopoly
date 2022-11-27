@@ -5,13 +5,14 @@
 #include "Player.h"
 Player::Player() {};
 
-Player::Player(int id, std::string name, int position, int money, int blockMoves, Item item) {
+Player::Player(int id, std::string name, int position, int money, int blockMoves, Token item, int turn) {
     this->id = id;
     this->name = name;
     this->position = position;
     this->money = money;
     this->blockMoves = blockMoves;
     this->item = item;
+    this->turn = turn;
 }
 
 int Player::getId() {
@@ -46,10 +47,19 @@ void Player::setBlockMoves(int blockMoves) {
     this->blockMoves = blockMoves;
 }
 
-Item Player::getItem() {
+Token Player::getItem() {
     return this->item;
 }
+
+int Player::getTurn() {
+    return this->turn;
+}
+
+void Player::setTurn(int turn) {
+    this->turn = turn;
+}
+
 string Player::toString() {
     return "Name: " + this->name + "Position: " + to_string(this->position) +
-    "Money: " + to_string(this->money) + "Item: " + this->item.toString()
+    "Money: " + to_string(this->money) + "Item: " + this->item.toString();
 }

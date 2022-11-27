@@ -2,15 +2,15 @@
 // Created by Jocselyn Aguilar on 25/11/22.
 //
 
-#ifndef MONOPOLY_ITEM_H
-#define MONOPOLY_ITEM_H
+#ifndef MONOPOLY_TOKEN_H
+#define MONOPOLY_TOKEN_H
 #include <iostream>
 using namespace std;
 
-class Item {
+class Token {
 public:
-    explicit Item(int id, string name, bool inUse);
-    explicit Item();
+    explicit Token(int id, string name);
+    explicit Token();
     string toString();
     int getId();
     string getName();
@@ -23,4 +23,4 @@ private:
 };
 
 
-#endif //MONOPOLY_ITEM_H
+#endif //MONOPOLY_TOKEN_H

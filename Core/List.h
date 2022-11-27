@@ -15,8 +15,10 @@ public:
     explicit List(int);
     explicit List();
     bool add(T);
+    void addDescending(T);
     string toString();
     T findByIndex(int);
+    Node<T> *getHead();
 
 
 private:
@@ -24,7 +26,9 @@ private:
     int maxLength;
     int length;
     bool isFull();
+    void addBeginning(T);
 };
+
 
 
 #endif //MONOPOLY_LIST_H

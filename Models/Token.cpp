@@ -2,29 +2,29 @@
 // Created by Jocselyn Aguilar on 25/11/22.
 //
 
-#include "Item.h"
+#include "Token.h"
 
-Item::Item(int id, std::string name, bool inUse) {
+Token::Token(int id, std::string name) {
     this->id = id;
     this->name = name;
     this->inUse = false;
 }
 
-Item::Item() {}
+Token::Token() {}
 
-int Item::getId(){
+int Token::getId(){
     return this->id;
 }
 
-string Item::getName() {
+string Token::getName() {
     return this->name;
 }
 
-bool Item::getInUse() {
+bool Token::getInUse() {
     return this->inUse;
 }
 
-string Item::toString() {
+string Token::toString() {
     string inUse = "";
 
     if(getInUse()){
@@ -34,5 +34,5 @@ string Item::toString() {
     }
 
     return "Id: " + to_string(this->id) +
-    "Name: " + this->name + "InUse: " + inUse;
+    ", Name: " + this->name + ", In use: " + inUse;
 }
