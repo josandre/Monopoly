@@ -35,6 +35,6 @@ Node<T> *Node<T>::getBack() {
 
 template<typename T>
 void Node<T>::setBack(Node<T> *back) {
-    this->next = next;
+    this->back = back;
 }
 
