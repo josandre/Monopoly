@@ -2,35 +2,17 @@
 // Created by Jocselyn Aguilar on 25/11/22.
 //
 
-#include "List.h"
+#include "CircularList.h"
+
 
 template<typename T>
-List<T>::List( int maxLength)  {
-    this->head = nullptr;
-    this->maxLength = maxLength;
-    this->length = 0;
+CircularList<T>::CircularList() {
 }
 
 template<typename T>
-List<T>::List() {
-    this->head = nullptr;
-    this->maxLength = nullptr;
-    this->length = 0;
-}
-
-template<typename T>
-bool List<T>::isFull() {
-    return this->maxLength != nullptr || this->length >= maxLength;
-}
-
-template<typename T>
-bool List<T>::add(T data) {
+bool CircularList<T>::add(T data) {
     Node<T> *newNode = new Node<T>(data);
     Node<T> *aux = this->head;
-
-    if(isFull()){
-        return false;
-    }
 
     if(this->head == nullptr){
         this->head = newNode;
@@ -40,7 +22,8 @@ bool List<T>::add(T data) {
             aux = aux->getNext();
         }
 
-        newNode->setBack(aux);
+        newNode->setNext(this->head);
+        this->head->setBack(newNode);
         aux->setNext(newNode);
     }
 
@@ -48,17 +31,18 @@ bool List<T>::add(T data) {
     return true;
 }
 
-
 template<typename T>
-string List<T>::toString() {
+string CircularList<T>::toString() {
     Node<T> *aux = this->head;
     string result = "[";
-    while (aux != nullptr){
+    int acum = 0;
+    while (acum <= this->length){
         result +=  aux->getData()->toString();
         aux = aux->getNext();
-        if(aux != nullptr){
+        if(length != acum){
             result += ", ";
         }
+        acum ++;
 
     }
 
@@ -67,12 +51,12 @@ string List<T>::toString() {
 }
 
 template<typename T>
-T List<T>::findByIndex(int position) {
+T CircularList<T>::findByIndex(int index) {
     Node<T> *aux = this->head;
     int count = 0;
 
     while (aux != nullptr){
-        if(position == count){
+        if(index == count){
             return aux->getData();
         }
 
@@ -82,3 +66,5 @@ T List<T>::findByIndex(int position) {
 
     return nullptr;
 }
+
+
