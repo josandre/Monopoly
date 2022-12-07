@@ -9,11 +9,12 @@ using namespace std;
 #include "Spot.h"
 #include "Player.h"
 #include "Enums/Color.h"
+#include "Enums/PropertyTypes.h"
 
 class Property : public Spot {
 public:
     explicit Property(string name, Color color, int cost, int rent,
-                       int mortgage, int costHouse, int costHotel, int costUnMortgage);
+                       int mortgage, int costHouse, PropertyTypes type);
     Color getColor();
     string toString();
     int getCost();
@@ -40,7 +41,7 @@ private:
     int costHotel;
     int costUnmortgage;
     Player *owner;
-
+    PropertyTypes type;
 };
 
 

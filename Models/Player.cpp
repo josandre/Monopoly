@@ -2,13 +2,14 @@
 // Created by Jocselyn Aguilar on 25/11/22.
 //
 
+#include "../Core/Node.cpp"
 #include "Player.h"
 Player::Player() {};
 
-Player::Player(int id, std::string name, int position, int money, int blockMoves, Token item, int turn) {
+Player::Player(int id, std::string name, Node<Spot> *spot, int money, int blockMoves, Token item, int turn) {
     this->id = id;
     this->name = name;
-    this->position = position;
+    this->spot = spot;
     this->money = money;
     this->blockMoves = blockMoves;
     this->item = item;
@@ -23,12 +24,12 @@ string  Player::getName() {
     return this->name;
 }
 
-int Player::getPosition() {
-    return this->position;
+Node<Spot> *Player::getSpot() {
+    return this->spot;
 }
 
-void Player::setPosition(int position) {
-    this->position = position;
+void Player::setSpot(Node<Spot> *spot) {
+    this->spot = spot;
 }
 
 int Player::getMoney() {
@@ -60,6 +61,6 @@ void Player::setTurn(int turn) {
 }
 
 string Player::toString() {
-    return "Name: " + this->name + "Position: " + to_string(this->position) +
+    return "Name: " + this->name + "Position: " + this->spot->getData().getName() +
     "Money: " + to_string(this->money) + "Item: " + this->item.toString();
 }

@@ -5,6 +5,10 @@
 #include "SpecialCard.h"
 SpecialCard::SpecialCard() : Spot("", SpecialCardType) {}
 
+SpecialCard::SpecialCard(string name, SpecialCardTypes type) : Spot(name, SpecialCardType) {
+    this->type = type;
+}
+
 SpecialCard::SpecialCard(string name, string text, int amount, int position, SpecialCardAction action) :
     Spot(name, SpecialCardType){
     this->text = text;

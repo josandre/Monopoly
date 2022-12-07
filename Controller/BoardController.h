@@ -12,27 +12,26 @@
 #include "../Models/SpecialCard.h"
 #include "../Core/Queue.h"
 #include "../Core/Stack.h"
+#include "../Core/CircularList.h"
 #include <random>
 
 class BoardController {
 public:
     explicit BoardController();
-    void initializeTokens();
     string getAvailbleTokens();
-    void initializeSpecialCardsFortune();
-    void initializeSpecialCardsComunalArk();
     int throwDice();
-
     SpecialCard getActionSpecialCard();
 
+
 private:
-    List<Token> tokens;
+    List<Token> *tokens;
     List<Player> players;
     Queue<Player> playerTurns;
-    Stack<SpecialCard> Mainfortune;
-    Stack<SpecialCard> Secondfortune;
-    Stack<SpecialCard> MainComunalArk;
-    Stack<SpecialCard> SecondComunalArk;
+    Stack<SpecialCard> *Mainfortune;
+    Stack<SpecialCard> *Secondfortune;
+    Stack<SpecialCard> *MainComunalArk;
+    Stack<SpecialCard> *SecondComunalArk;
+    CircularList<Spot> *board;
 };
 
 

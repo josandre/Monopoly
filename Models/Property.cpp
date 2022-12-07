@@ -6,7 +6,7 @@
 #include "Enums/SpotType.h"
 
 Property::Property(string name, Color color, int cost, int rent,
-                    int mortgage, int costHouse, int costHotel, int costUnMortgage)
+                    int mortgage, int costHouse, PropertyTypes type)
         : Spot(name, PropertyType) {
     this->color = color;
     this->cost = cost;
@@ -15,9 +15,10 @@ Property::Property(string name, Color color, int cost, int rent,
     this->hasHotel = false;
     this->mortgage = mortgage;
     this->costHouse = costHouse;
-    this->costHotel = costHotel;
-    this->costUnmortgage = costUnMortgage;
+    this->costHotel = costHouse;
+    this->costUnmortgage = (int)(mortgage + (mortgage * 0.1));
     this->owner = nullptr;
+    this->type = type;
 }
 
 Color Property::getColor() {

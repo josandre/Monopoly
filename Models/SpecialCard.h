@@ -7,12 +7,14 @@
 
 #include "Spot.h"
 #include "Enums/SpecialCardAction.h"
+#include "Enums/SpecialCardType.h"
 
 class SpecialCard: public Spot{
 public:
     explicit SpecialCard();
     explicit SpecialCard(string, string, int, int, SpecialCardAction);
     explicit SpecialCard(string, string, int, SpecialCardAction);
+    explicit SpecialCard(string, SpecialCardTypes);
     string getText();
     int getAmountToPayOrCollect();
     int getPositionToGo();
@@ -24,6 +26,7 @@ private:
     int amountToPayOrCollect;
     int positionToGo;
     SpecialCardAction action;
+    SpecialCardTypes type;
 };
 
 

@@ -7,6 +7,7 @@
 
 #endif //MONOPOLY_COLOR_H
 enum Color{
+    None,
     Brown,
     LightBlue,
     Pink,
