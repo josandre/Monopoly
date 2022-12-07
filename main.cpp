@@ -14,7 +14,7 @@ int main() {
     //BoardController board = *new BoardController();
     //board.initializeTokens();
 
-    auto token = *new Token(1, "Car");
+    /*auto token = *new Token(1, "Car");
     auto player1 = *new Player(1, "Anthony", 0, 1500, 0, token, 5);
     auto player2 = *new Player(1, "Jos", 0, 1500, 0, token, 1);
     auto player3 = *new Player(1, "Cami", 0, 1500, 0, token, 6);
@@ -33,5 +33,7 @@ int main() {
         aux = aux->getNext();
     }
 
-    return 0;
+    return 0;*/
+
+
 }
