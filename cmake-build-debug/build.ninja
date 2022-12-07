@@ -112,6 +112,12 @@ build CMakeFiles/Monopoly.dir/Core/Queue.cpp.o: CXX_COMPILER__Monopoly_Debug /Us
   OBJECT_DIR = CMakeFiles/Monopoly.dir
   OBJECT_FILE_DIR = CMakeFiles/Monopoly.dir/Core
 
+build CMakeFiles/Monopoly.dir/Core/Stack.cpp.o: CXX_COMPILER__Monopoly_Debug /Users/jocselynaguilar/CLionProjects/Monopoly/Core/Stack.cpp || cmake_object_order_depends_target_Monopoly
+  DEP_FILE = CMakeFiles/Monopoly.dir/Core/Stack.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++14
+  OBJECT_DIR = CMakeFiles/Monopoly.dir
+  OBJECT_FILE_DIR = CMakeFiles/Monopoly.dir/Core
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Monopoly
@@ -120,7 +126,7 @@ build CMakeFiles/Monopoly.dir/Core/Queue.cpp.o: CXX_COMPILER__Monopoly_Debug /Us
 #############################################
 # Link the executable Monopoly
 
-build Monopoly: CXX_EXECUTABLE_LINKER__Monopoly_Debug CMakeFiles/Monopoly.dir/main.cpp.o CMakeFiles/Monopoly.dir/Core/Node.cpp.o CMakeFiles/Monopoly.dir/Models/Property.cpp.o CMakeFiles/Monopoly.dir/Models/Spot.cpp.o CMakeFiles/Monopoly.dir/Models/SpecialCard.cpp.o CMakeFiles/Monopoly.dir/Models/Tax.cpp.o CMakeFiles/Monopoly.dir/Models/Jail.cpp.o CMakeFiles/Monopoly.dir/Models/Free.cpp.o CMakeFiles/Monopoly.dir/Models/Token.cpp.o CMakeFiles/Monopoly.dir/Controller/BoardController.cpp.o CMakeFiles/Monopoly.dir/Core/Queue.cpp.o
+build Monopoly: CXX_EXECUTABLE_LINKER__Monopoly_Debug CMakeFiles/Monopoly.dir/main.cpp.o CMakeFiles/Monopoly.dir/Core/Node.cpp.o CMakeFiles/Monopoly.dir/Models/Property.cpp.o CMakeFiles/Monopoly.dir/Models/Spot.cpp.o CMakeFiles/Monopoly.dir/Models/SpecialCard.cpp.o CMakeFiles/Monopoly.dir/Models/Tax.cpp.o CMakeFiles/Monopoly.dir/Models/Jail.cpp.o CMakeFiles/Monopoly.dir/Models/Free.cpp.o CMakeFiles/Monopoly.dir/Models/Token.cpp.o CMakeFiles/Monopoly.dir/Controller/BoardController.cpp.o CMakeFiles/Monopoly.dir/Core/Queue.cpp.o CMakeFiles/Monopoly.dir/Core/Stack.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk
   OBJECT_DIR = CMakeFiles/Monopoly.dir
   POST_BUILD = :

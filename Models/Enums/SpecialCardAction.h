@@ -11,5 +11,6 @@ enum SpecialCardAction {
     Pay,
     Collect,
     GoTo,
-    ExitJail
+    ExitJail,
+    CalculatePay
 };

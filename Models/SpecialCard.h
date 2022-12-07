@@ -5,13 +5,14 @@
 #ifndef MONOPOLY_SPECIALCARD_H
 #define MONOPOLY_SPECIALCARD_H
 
-
 #include "Spot.h"
 #include "Enums/SpecialCardAction.h"
 
 class SpecialCard: public Spot{
 public:
-    SpecialCard(string, string, int, int, SpecialCardAction);
+    explicit SpecialCard();
+    explicit SpecialCard(string, string, int, int, SpecialCardAction);
+    explicit SpecialCard(string, string, int, SpecialCardAction);
     string getText();
     int getAmountToPayOrCollect();
     int getPositionToGo();

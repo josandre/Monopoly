@@ -30,7 +30,7 @@ void Node<T>::setNext(Node<T> *next) {
 
 template<typename T>
 Node<T> *Node<T>::getBack() {
-    return this->next;
+    return this->back;
 }
 
 template<typename T>
