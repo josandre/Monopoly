@@ -3,7 +3,6 @@
 //
 
 #include "List.h"
-#include "./Node.cpp"
 
 template<typename T>
 List<T>::List(int maxLength)  {
