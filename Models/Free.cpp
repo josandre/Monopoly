@@ -4,4 +4,4 @@
 
 #include "Free.h"
 
-Free::Free(std::string name) : Spot(name, FreeType) {}
+Free::Free(string name) : Spot(name, FreeType) {}

@@ -5,6 +5,8 @@
 #ifndef MONOPOLY_NODE_H
 #define MONOPOLY_NODE_H
 
+
+
 template <typename T>
 
 class Node {
@@ -22,7 +24,7 @@ public:
 
     void setBack(Node<T> *back);
 
-    T getData();
+    T& getData();
 
     void setData(T);
 

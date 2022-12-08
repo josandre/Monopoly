@@ -5,18 +5,19 @@
 #ifndef MONOPOLY_QUEUE_H
 #define MONOPOLY_QUEUE_H
 
-#include "Node.h"
-#include "../Models/Player.h"
+#include "./Node.h"
+using namespace std;
+#include "iostream"
+//#include "../Models/Player.h"
 
 template<typename T>
 class Queue {
 public:
-    explicit Queue(int, Node<T>, Node<T>);
+    explicit Queue(int);
     explicit  Queue();
     Node<T> *getFront();
-    void setFront(T *);
-    Node<T> *getFinal();
-    void setFinal(T *);
+    int getMaxLength();
+    int getLength();
     void enQueue(T);
     T deQueue();
     string toString();
@@ -25,8 +26,10 @@ public:
 
 private:
     int length;
+    int maxLenght;
     Node<T> *front;
     Node<T> *final;
+    bool isFull();
 
 };
 

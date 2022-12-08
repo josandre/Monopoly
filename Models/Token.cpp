@@ -4,7 +4,7 @@
 
 #include "Token.h"
 
-Token::Token(int id, std::string name) {
+Token::Token(int id, string name) {
     this->id = id;
     this->name = name;
     this->inUse = false;
@@ -22,6 +22,10 @@ string Token::getName() {
 
 bool Token::getInUse() {
     return this->inUse;
+}
+
+void Token::setInUse(bool newValue) {
+    this->inUse = newValue;
 }
 
 string Token::toString() {
