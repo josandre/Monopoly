@@ -43,6 +43,16 @@ List<Player> *BoardController::getPlayers() {
     return this->players;
 }
 
+
+Node<Spot> *BoardController::getNewSpot(int movements, Node<Spot> *actualSpot) {
+    Node<Spot> *aux = actualSpot;
+    for(int i = 0; i < movements; i++){
+        aux = aux->getNext();
+    }
+
+    return aux;
+}
+
 Queue<Player> *BoardController::getPlayerInTurns() {
     return this->playerTurns;
 }

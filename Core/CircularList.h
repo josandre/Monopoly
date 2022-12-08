@@ -14,7 +14,8 @@ public:
     explicit CircularList();
     bool add(T);
     string toString();
-    T findByIndex(int);
+    T &findByIndex(int);
+    Node<T> *getHead();
 
 private:
     Node<T> *head = nullptr;

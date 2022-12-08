@@ -77,11 +77,11 @@ string Queue<T>::toString() {
 
 
 template<typename T>
-T Queue<T>::deQueue() {
+T& Queue<T>::deQueue() {
     Node<T> *aux = this->front;
     if(aux != nullptr){
         this->front = aux->getNext();
-        T data = aux->getData();
+        T& data = aux->getData();
         delete aux;
         return data;
     }
