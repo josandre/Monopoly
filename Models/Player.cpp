@@ -1,13 +1,14 @@
 //
 // Created by Jocselyn Aguilar on 25/11/22.
 //
-
 #include "../Core/Node.cpp"
 #include "Player.h"
-Player::Player() {};
 
-Player::Player(int id, std::string name, Node<Spot> *spot, int money, int blockMoves, Token item, int turn) {
-    this->id = id;
+
+
+
+Player::Player(string name, Node<Spot> *spot, int money, int blockMoves, Token item, int turn) {
+
     this->name = name;
     this->spot = spot;
     this->money = money;
@@ -16,9 +17,7 @@ Player::Player(int id, std::string name, Node<Spot> *spot, int money, int blockM
     this->turn = turn;
 }
 
-int Player::getId() {
-    return this->id;
-}
+Player::Player() {};
 
 string  Player::getName() {
     return this->name;
@@ -26,6 +25,10 @@ string  Player::getName() {
 
 Node<Spot> *Player::getSpot() {
     return this->spot;
+}
+
+Token Player::getItem() {
+    return this->item;
 }
 
 void Player::setSpot(Node<Spot> *spot) {
@@ -48,9 +51,7 @@ void Player::setBlockMoves(int blockMoves) {
     this->blockMoves = blockMoves;
 }
 
-Token Player::getItem() {
-    return this->item;
-}
+
 
 int Player::getTurn() {
     return this->turn;
@@ -61,6 +62,6 @@ void Player::setTurn(int turn) {
 }
 
 string Player::toString() {
-    return "Name: " + this->name + "Position: " + this->spot->getData().getName() +
+    return "Name: " + this->name + " Turn: " + to_string(this->turn) + " Position: " + this->spot->getData().getName() +
     "Money: " + to_string(this->money) + "Item: " + this->item.toString();
 }

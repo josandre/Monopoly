@@ -4,34 +4,34 @@
 
 #include "Queue.h"
 template<typename T>
-Queue<T>::Queue(int length, Node<T> front, Node<T> final) {
-    this->length = length;
-    this->front = front;
-     this->final = final;
+Queue<T>::Queue(int maxLength) {
+    this->maxLenght = maxLength;
+    this->length = 0;
+    this->front = nullptr;
 
 }
 
 template<typename T>
-Queue<T>::Queue() {}
+Queue<T>::Queue() {
+    this->front = nullptr;
+    this->maxLenght = -1;
+    this->length = 0;
+}
 
 template<typename T>
 Node<T> *Queue<T>::getFront(){
     return this->front;
 }
 
+
 template<typename T>
-void Queue<T>::setFront(T *newFront) {
-    this->front = newFront;
+int Queue<T>::getLength() {
+    return this->length;
 }
 
 template<typename T>
-Node<T> *Queue<T>::getFinal() {
-    return  this->final;
-}
-
-template<typename T>
-void Queue<T>::setFinal(T *newFinal) {
-    this->final = newFinal;
+int Queue<T>::getMaxLength() {
+    return this->maxLenght;
 }
 
 template<typename T>
@@ -47,18 +47,28 @@ void Queue<T>::enQueue(T data) {
         this->final = nuevo;
 
     }
+
+    this->length ++;
 }
+
+template<typename T>
+bool Queue<T>::isFull() {
+    return this->maxLenght != -1 && this->length >= this->maxLenght;
+}
+
 
 template<typename T>
 string Queue<T>::toString() {
     Node<T> *aux = this->front;
     string result = "[";
     while (aux != nullptr){
-        result +=  aux->getData()->toString();
+
+        result +=  aux->getData().toString();
         aux = aux->getNext();
         if(aux != nullptr){
             result += ", ";
         }
+
 
     }
     result += "]";
@@ -75,6 +85,8 @@ T Queue<T>::deQueue() {
         delete aux;
         return data;
     }
+
+    this->length --;
 }
 
 

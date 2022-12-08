@@ -15,11 +15,12 @@ public:
     int getId();
     string getName();
     bool getInUse();
-    bool setInUse(bool);
+    void setInUse(bool);
 private:
     int id;
     string name;
     bool inUse;
+
 };
 
 

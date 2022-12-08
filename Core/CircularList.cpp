@@ -18,13 +18,14 @@ bool CircularList<T>::add(T data) {
         this->head = newNode;
 
     }else{
-        while (aux->getNext() != nullptr){
+        while (aux->getNext() != this->head && aux->getNext() != nullptr){
             aux = aux->getNext();
         }
 
         newNode->setNext(this->head);
         this->head->setBack(newNode);
         aux->setNext(newNode);
+        newNode->setBack(aux);
     }
 
     this->length++;
@@ -54,17 +55,18 @@ template<typename T>
 T CircularList<T>::findByIndex(int index) {
     Node<T> *aux = this->head;
     int count = 0;
-
+    T data;
     while (aux != nullptr){
         if(index == count){
-            return aux->getData();
+            data = aux->getData();
+            break;
         }
 
         aux = aux->getNext();
         count++;
     }
 
-    return nullptr;
+    return data;
 }
 
 

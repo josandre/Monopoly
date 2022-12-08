@@ -13,10 +13,9 @@ using namespace std;
 
 class Player {
 public:
-    explicit Player(int, string, Node<Spot>*, int, int, Token, int);
+    explicit Player(string, Node<Spot>*, int, int, Token, int);
     explicit Player();
     string toString();
-    int getId();
     string getName();
     Node<Spot> *getSpot();
     void setSpot(Node<Spot>*);
@@ -29,7 +28,7 @@ public:
     void setTurn(int);
 
 private:
-    int id;
+
     string name;
     Node<Spot> *spot;
     int money;

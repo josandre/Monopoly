@@ -44,8 +44,13 @@ bool List<T>::add(T data) {
         aux->setNext(newNode);
     }
 
-    this->length++;
+    this->length ++;
     return true;
+}
+
+template<typename T>
+int List<T>::getLength() {
+    return this->length;
 }
 
 
@@ -54,7 +59,7 @@ string List<T>::toString() {
     Node<T> *aux = this->head;
     string result = "[";
     while (aux != nullptr){
-        result +=  aux->getData()->toString();
+        result +=  aux->getData().toString();
         aux = aux->getNext();
         if(aux != nullptr){
             result += ", ";
@@ -71,8 +76,14 @@ Node<T> *List<T>::getHead() {
     return this->head;
 }
 
+
 template<typename T>
-T List<T>::findByIndex(int position) {
+int List<T>::getMaxLength() {
+    return this->length;
+}
+
+template<typename T>
+T& List<T>::findByIndex(int position) {
     Node<T> *aux = this->head;
     int count = 0;
 
@@ -84,8 +95,6 @@ T List<T>::findByIndex(int position) {
         aux = aux->getNext();
         count++;
     }
-
-    return nullptr;
 }
 
 template<typename T>
@@ -99,6 +108,7 @@ void List<T>::addBeginning(T data) {
         this->head->setBack(nuevo);
         this->head = nuevo;
     }
+    this->length ++;
 }
 
 template<typename T>
@@ -106,8 +116,10 @@ void List<T>::addDescending(T data) {
     Node<T> *nuevoNodo = new Node<T>(data);
     Node<T> *aux = this->head;
 
+
     if(this->head == nullptr){
         this->head = nuevoNodo;
+        this->length ++;
     } else{
         while(aux != nullptr){
             Node<T> *anterior = aux;
@@ -121,18 +133,23 @@ void List<T>::addDescending(T data) {
                     this->add(data);
                     break;
                 } else{
-                    if(anterior->getData().getTurn() > nuevoNodo->getData().getTurn() &&
-                        siguiente->getData().getTurn() < nuevoNodo->getData().getTurn()){
+                    if((anterior->getData().getTurn() > nuevoNodo->getData().getTurn() &&
+                        siguiente->getData().getTurn() < nuevoNodo->getData().getTurn()) || (anterior->getData().getTurn() == nuevoNodo->getData().getTurn())){
                         nuevoNodo->setNext(siguiente);
                         siguiente->setBack(nuevoNodo);
                         nuevoNodo->setBack(anterior);
                         anterior->setNext(nuevoNodo);
+                        this->length ++;
                         break;
                     }
                 }
             }
             aux = aux->getNext();
+
         }
+
     }
+
+
 }
 

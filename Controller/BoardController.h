@@ -15,18 +15,22 @@
 #include "../Core/CircularList.h"
 #include <random>
 
+
 class BoardController {
 public:
     explicit BoardController();
-    string getAvailbleTokens();
+    string getAvailableTokens();
+    Token selectToken(int);
     int throwDice();
+    List<Player> *getPlayers();
+    Queue<Player> *getPlayerInTurns();
     SpecialCard getActionSpecialCard();
-
-
+    CircularList<Spot> *getBoard();
+    string getPlayersReady();
 private:
     List<Token> *tokens;
-    List<Player> players;
-    Queue<Player> playerTurns;
+    List<Player> *players;
+    Queue<Player> *playerTurns;
     Stack<SpecialCard> *Mainfortune;
     Stack<SpecialCard> *Secondfortune;
     Stack<SpecialCard> *MainComunalArk;

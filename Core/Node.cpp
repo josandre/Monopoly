@@ -13,7 +13,7 @@ Node<T>::Node(T data)
 }
 
 template<typename T>
-T Node<T>::getData() {
+T& Node<T>::getData() {
     return this->data;
 }
 

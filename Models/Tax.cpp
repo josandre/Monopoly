@@ -3,7 +3,7 @@
 //
 
 #include "Tax.h"
-Tax::Tax(std::string name, int cost): Spot(name, TaxType) {
+Tax::Tax(string name, int cost): Spot(name, TaxType) {
     this->cost = cost;
 }
 

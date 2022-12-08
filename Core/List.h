@@ -17,8 +17,10 @@ public:
     bool add(T);
     void addDescending(T);
     string toString();
-    T findByIndex(int);
+    T& findByIndex(int);
     Node<T> *getHead();
+    int getMaxLength();
+    int getLength();
 
 
 private:

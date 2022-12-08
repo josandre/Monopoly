@@ -3,7 +3,7 @@
 //
 
 #include "Jail.h"
-Jail::Jail(std::string name, int blockMoves) : Spot(name, JailType) {
+Jail::Jail(string name, int blockMoves) : Spot(name, JailType) {
     this->blockMoves = blockMoves;
 }
 
