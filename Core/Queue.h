@@ -19,7 +19,7 @@ public:
     int getMaxLength();
     int getLength();
     void enQueue(T);
-    T deQueue();
+    T& deQueue();
     string toString();
 
 

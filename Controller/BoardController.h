@@ -27,6 +27,8 @@ public:
     SpecialCard getActionSpecialCard();
     CircularList<Spot> *getBoard();
     string getPlayersReady();
+    Node<Spot> *getNewSpot(int, Node<Spot>*);
+
 private:
     List<Token> *tokens;
     List<Player> *players;

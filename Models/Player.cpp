@@ -63,5 +63,5 @@ void Player::setTurn(int turn) {
 
 string Player::toString() {
     return "Name: " + this->name + " Turn: " + to_string(this->turn) + " Position: " + this->spot->getData().getName() +
-    "Money: " + to_string(this->money) + "Item: " + this->item.toString();
+    " Money: " + to_string(this->money) + " Item: " + this->item.toString();
 }

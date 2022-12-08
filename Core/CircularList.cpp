@@ -52,21 +52,26 @@ string CircularList<T>::toString() {
 }
 
 template<typename T>
-T CircularList<T>::findByIndex(int index) {
+T& CircularList<T>::findByIndex(int index) {
     Node<T> *aux = this->head;
     int count = 0;
-    T data;
+
     while (aux != nullptr){
         if(index == count){
-            data = aux->getData();
-            break;
+            return aux->getData();
+
         }
 
         aux = aux->getNext();
         count++;
     }
 
-    return data;
+
+}
+
+template<typename T>
+Node<T> *CircularList<T>::getHead() {
+    return this->head;
 }
 
 
