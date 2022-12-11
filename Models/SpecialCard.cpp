@@ -6,7 +6,7 @@
 SpecialCard::SpecialCard() : Spot("", SpecialCardType) {}
 
 SpecialCard::SpecialCard(string name, SpecialCardTypes type) : Spot(name, SpecialCardType) {
-    this->type = type;
+    this->cardType = type;
 }
 
 SpecialCard::SpecialCard(string name, string text, int amount, int position, SpecialCardAction action) :
@@ -28,6 +28,10 @@ string SpecialCard::getText() {
     return this->text;
 }
 
+SpecialCardTypes SpecialCard::getCardType() {
+    return this->cardType;
+}
+
 int SpecialCard::getAmountToPayOrCollect() {
     return this->amountToPayOrCollect;
 }
@@ -42,7 +46,5 @@ SpecialCardAction SpecialCard::getAction() {
 
 
 string SpecialCard::toString() {
-    return "Name: " + this->getName() + ", Text: "  + this->getText() +
-        ", Amount to pay or collect: " + to_string(this->getAmountToPayOrCollect()) +
-        ", Position to go: " + to_string(this->getPositionToGo()) + ", Action: " + to_string(this->getAction());
+    return "Name: " + this->getName() + ", Text: "  + this->getText();
 }

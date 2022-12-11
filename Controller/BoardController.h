@@ -24,10 +24,12 @@ public:
     int throwDice();
     List<Player> *getPlayers();
     Queue<Player> *getPlayerInTurns();
-    SpecialCard getActionSpecialCard();
-    CircularList<Spot> *getBoard();
+    SpecialCard getActionSpecialCard(SpecialCardTypes );
+    CircularList<Spot*> *getBoard();
     string getPlayersReady();
-    Node<Spot> *getNewSpot(int, Node<Spot>*);
+    Node<Spot*> *getNewSpot(int, Player*);
+    Node<Spot*> *getJail();
+    Player* findPlayerByToken(Token);
 
 private:
     List<Token> *tokens;
@@ -37,7 +39,9 @@ private:
     Stack<SpecialCard> *Secondfortune;
     Stack<SpecialCard> *MainComunalArk;
     Stack<SpecialCard> *SecondComunalArk;
-    CircularList<Spot> *board;
+    CircularList<Spot*> *board;
+    Node<Spot*> *jail;
+    void initializeJail();
 };
 
 

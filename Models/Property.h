@@ -4,7 +4,7 @@
 
 #ifndef MONOPOLY_PROPERTY_H
 #define MONOPOLY_PROPERTY_H
-using namespace std;
+
 #include <iostream>
 #include "Spot.h"
 #include "Player.h"

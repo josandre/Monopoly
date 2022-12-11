@@ -14,7 +14,7 @@ public:
     int getBlockMoves();
     void setBlockMoves(int);
 private:
-    int blockMoves;
+    int blockMoves = 2;
 };
 
 

@@ -107,46 +107,50 @@ void Initialize::InitializeCommunalArkSpecialCard(Stack<SpecialCard> *MainComuna
     MainComunalArk->push(comunalArk16);
 }
 
-void Initialize::InitializeBoard(CircularList<Spot> *board) {
-    Tax exit = *new Tax("Exit", 200);
-    Property mediterraneanAvenue = *new Property("Mediterranean Avenue",Brown ,60, 2,  30, 50, Common);
-    SpecialCard communalArk1 = * new SpecialCard("Communal Ark", CommunalArk);
-    Property balticAvenue = *new Property("Baltic Avenue", Brown , 60, 4,  30, 50,  Common);
-    Tax taxes = * new Tax("Taxes over income", 200);
-    Property railRoadReading = * new Property("Railroad Reading", None, 200, 25, 100, 0,  RailRoad);
-    Property orientalAvenue = * new Property("Oriental Avenue", LightBlue, 100, 6, 50, 50, Common);
-    SpecialCard fortune1 = * new SpecialCard("Fortune", Fortune);
-    Property vermontAvenue = * new Property("Vermont Avenue", LightBlue, 100, 6, 50, 50, Common);
-    Property connecticutAvenue = * new Property("Connecticut Avenue", LightBlue, 120, 8, 60, 50, Common);
-    Free visitJail = *new Free("Jail, visit only");
-    Property sanCarlosSquare = * new Property("San Carlos Square", Pink, 140, 10, 70, 100, Common);
-    Property electricityCompany = * new Property("Electricity Company", None, 150, 0, 75, 0, Company);
-    Property statesAvenue = * new Property("States Avenue", Pink, 140, 10, 70, 100, Common);
-    Property virginiaAvenue = * new Property("Virginia Avenue", Pink, 160, 12, 80, 100, Common);
-    Property railRoadPennsylvania = * new Property("Railroad Pennsylvania", None, 200, 25, 100, 0,  RailRoad);
-    Property stJamesSquare = * new Property("St. James Square", Orange, 180, 14, 90, 100, Common);
-    SpecialCard communalArk2 = *new SpecialCard("Communal Ark", CommunalArk);
-    Property tennesseeAvenue = * new Property("Tennessee Avenue", Orange, 180, 14, 90, 100, Common);
-    Property newYorkAvenue = * new Property("New York Avenue", Orange, 200, 16, 100, 100, Common);
-    Free freeZone = * new Free("Free zone");
-    Property kentuckyAvenue = * new Property("Kentucky Avenue", Red, 220, 18, 110, 150, Common);
-    SpecialCard fortune2 = * new SpecialCard("Fortune", Fortune);
-    Property indianaAvenue = * new Property("Indiana Avenue", Red, 220, 18, 110, 150, Common);
-    Property illinoisAvenue = * new Property("Illinois Avenue", Red, 240, 20, 120, 150, Common);
-    Property railRoadBAndO = * new Property("Railroad B & O", None, 200, 25, 100, 0,  RailRoad);
-    Property atlanticAvenue = * new Property("Atlantic Avenue", Yellow, 260, 22, 130, 150, Common);
-    Property ventnorAvenue = * new Property("Ventnor Avenue", Yellow, 260, 22, 130, 150, Common);
-    Property marvinGardens = * new Property("Marvin Gardens", Yellow, 280, 24, 140, 150, Common);
-    Jail jail = *new Jail("Go to jail!!", 2);
-    Property pacificAvenue = * new Property("Pacific Avenue", Green, 300, 26, 150, 200, Common);
-    Property northCarolineAvenue = * new Property("North Caroline Avenue", Green, 300, 26, 150, 200, Common);
-    SpecialCard communalArk3 = *new SpecialCard("Communal Ark", CommunalArk);
-    Property pennsylvaniaAvenue = * new Property("Pennsylvania Avenue", Green, 320, 28, 160, 200, Common);
-    Property railRoadLine = * new Property("Railroad Line", None, 200, 25, 100, 0,  RailRoad);
-    SpecialCard fortune3 = * new SpecialCard("Fortune", Fortune);
-    Property squaredPark = * new Property("Squared Park", Blue, 350, 35, 175, 200, Common);
-    Tax luxuryTax = * new Tax("Luxury tax", 100);
-    Property mayfair = * new Property("Mayfair", Blue, 400, 50, 200, 200, Common);
+void Initialize::InitializeBoard(CircularList<Spot*> *board) {
+    Tax *exit = new Tax("Exit", 200);
+    Property *mediterraneanAvenue = new Property("Mediterranean Avenue",Brown ,60, 2,  30, 50, Common);
+    SpecialCard *communalArk1 = new SpecialCard("Communal Ark", CommunalArk);
+    Property *balticAvenue = new Property("Baltic Avenue", Brown , 60, 4,  30, 50,  Common);
+    Tax *taxes = new Tax("Taxes over income", 200);
+    Property *railRoadReading = new Property("Railroad Reading", None, 200, 25, 100, 0,  RailRoad);
+    Property *orientalAvenue = new Property("Oriental Avenue", LightBlue, 100, 6, 50, 50, Common);
+    SpecialCard *fortune1 = new SpecialCard("Fortune", Fortune);
+    Property *vermontAvenue = new Property("Vermont Avenue", LightBlue, 100, 6, 50, 50, Common);
+    Property *connecticutAvenue = new Property("Connecticut Avenue", LightBlue, 120, 8, 60, 50, Common);
+    Free *visitJail = new Free("Jail");
+    Property *sanCarlosSquare = new Property("San Carlos Square", Pink, 140, 10, 70, 100, Common);
+    Property *electricityCompany = new Property("Electricity Company", None, 150, 0, 75, 0, Company);
+    Property *statesAvenue = new Property("States Avenue", Pink, 140, 10, 70, 100, Common);
+    Property *virginiaAvenue = new Property("Virginia Avenue", Pink, 160, 12, 80, 100, Common);
+    Property *railRoadPennsylvania = new Property("Railroad Pennsylvania", None, 200, 25, 100, 0,  RailRoad);
+    Property *stJamesSquare = new Property("St. James Square", Orange, 180, 14, 90, 100, Common);
+    SpecialCard *communalArk2 = new SpecialCard("Communal Ark", CommunalArk);
+    Property *tennesseeAvenue = new Property("Tennessee Avenue", Orange, 180, 14, 90, 100, Common);
+    Property *newYorkAvenue = new Property("New York Avenue", Orange, 200, 16, 100, 100, Common);
+    Free *freeZone = new Free("Free zone");
+    Property *kentuckyAvenue = new Property("Kentucky Avenue", Red, 220, 18, 110, 150, Common);
+    SpecialCard *fortune2 = new SpecialCard("Fortune", Fortune);
+    Property *indianaAvenue = new Property("Indiana Avenue", Red, 220, 18, 110, 150, Common);
+    Property *illinoisAvenue = new Property("Illinois Avenue", Red, 240, 20, 120, 150, Common);
+    Property *railRoadBAndO = new Property("Railroad B & O", None, 200, 25, 100, 0,  RailRoad);
+    Property *atlanticAvenue = new Property("Atlantic Avenue", Yellow, 260, 22, 130, 150, Common);
+    Property *ventnorAvenue = new Property("Ventnor Avenue", Yellow, 260, 22, 130, 150, Common);
+    Property *waterCompany = new Property("Water Company", None, 150, 0, 75, 0, Company);
+
+    Property *marvinGardens = new Property("Marvin Gardens", Yellow, 280, 24, 140, 150, Common);
+
+    Jail *jail = new Jail("Go to jail!!", 2);
+
+    Property *pacificAvenue = new Property("Pacific Avenue", Green, 300, 26, 150, 200, Common);
+    Property *northCarolineAvenue = new Property("North Caroline Avenue", Green, 300, 26, 150, 200, Common);
+    SpecialCard *communalArk3 = new SpecialCard("Communal Ark", CommunalArk);
+    Property *pennsylvaniaAvenue = new Property("Pennsylvania Avenue", Green, 320, 28, 160, 200, Common);
+    Property *railRoadLine = new Property("Railroad Line", None, 200, 25, 100, 0,  RailRoad);
+    SpecialCard *fortune3 = new SpecialCard("Fortune", Fortune);
+    Property *squaredPark = new Property("Squared Park", Blue, 350, 35, 175, 200, Common);
+    Tax *luxuryTax = new Tax("Luxury tax", 100);
+    Property *mayfair = new Property("Mayfair", Blue, 400, 50, 200, 200, Common);
     board->add(exit);
     board->add(mediterraneanAvenue);
     board->add(communalArk1);
@@ -175,6 +179,7 @@ void Initialize::InitializeBoard(CircularList<Spot> *board) {
     board->add(railRoadBAndO);
     board->add(atlanticAvenue);
     board->add(ventnorAvenue);
+    board->add(waterCompany);
     board->add(marvinGardens);
     board->add(jail);
     board->add(pacificAvenue);
@@ -189,7 +194,7 @@ void Initialize::InitializeBoard(CircularList<Spot> *board) {
 }
 
 
-void Initialize::InitializeGame(List<Token> *tokens, Stack<SpecialCard> *MainFortune, Stack<SpecialCard> *MainCommunalArk, CircularList<Spot> *board) {
+void Initialize::InitializeGame(List<Token> *tokens, Stack<SpecialCard> *MainFortune, Stack<SpecialCard> *MainCommunalArk, CircularList<Spot*> *board) {
     this->InitializeTokens(tokens);
     this->InitializeFortuneSpecialCards(MainFortune);
     this->InitializeCommunalArkSpecialCard(MainCommunalArk);
