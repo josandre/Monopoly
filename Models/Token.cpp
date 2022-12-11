@@ -29,14 +29,8 @@ void Token::setInUse(bool newValue) {
 }
 
 string Token::toString() {
-    string inUse = "";
 
-    if(getInUse()){
-        inUse = "Not available";
-    }else{
-        inUse = "available";
-    }
 
     return "Id: " + to_string(this->id) +
-    ", Name: " + this->name + ", In use: " + inUse;
+    ", Name: " + this->name ;
 }

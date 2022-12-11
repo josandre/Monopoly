@@ -12,14 +12,14 @@ class Spot {
 public:
     explicit Spot(string, SpotType);
     explicit Spot();
-    string getName();
-    SpotType getType();
+    virtual ~Spot();
+    virtual string getName();
+    virtual SpotType getType();
     string toString();
 
 protected:
     string name;
     SpotType type;
-
 };
 
 

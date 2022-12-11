@@ -23,6 +23,8 @@ public:
     int getLength();
 
 
+
+
 private:
     Node<T> *head = nullptr;
     int maxLength;

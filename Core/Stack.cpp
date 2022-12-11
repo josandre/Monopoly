@@ -14,7 +14,7 @@ Stack<T>::Stack(int length) {
 template<typename T>
 Stack<T>::Stack() {
     this->top = nullptr;
-    this->length = 16;
+    this->length = 0;
 }
 
 template<typename T>
@@ -35,9 +35,10 @@ T Stack<T>::pop() {
 template<typename T>
 bool Stack<T>::isEmpty() {
     if(this->top == nullptr){
-        return false;
+        return true;
     }
-    return true;
+
+    return false;
 }
 
 template<typename T>

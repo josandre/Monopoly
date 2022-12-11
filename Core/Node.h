@@ -5,8 +5,6 @@
 #ifndef MONOPOLY_NODE_H
 #define MONOPOLY_NODE_H
 
-
-
 template <typename T>
 
 class Node {

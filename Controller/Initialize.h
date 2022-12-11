@@ -15,14 +15,14 @@
 class Initialize {
 public:
     Initialize();
-    void InitializeGame(List<Token> *, Stack<SpecialCard> *, Stack<SpecialCard> *, CircularList<Spot> *);
+    void InitializeGame(List<Token> *, Stack<SpecialCard> *, Stack<SpecialCard> *, CircularList<Spot*> *);
 
 
 private:
     void InitializeTokens(List<Token> *);
     void InitializeFortuneSpecialCards(Stack<SpecialCard> *);
     void InitializeCommunalArkSpecialCard(Stack<SpecialCard> *);
-    void InitializeBoard(CircularList<Spot>  *);
+    void InitializeBoard(CircularList<Spot*>  *);
 };
 
 

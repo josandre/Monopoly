@@ -20,13 +20,14 @@ public:
     int getPositionToGo();
     SpecialCardAction getAction();
     string toString();
+    SpecialCardTypes getCardType();
 
 private:
     string text;
     int amountToPayOrCollect;
     int positionToGo;
     SpecialCardAction action;
-    SpecialCardTypes type;
+    SpecialCardTypes cardType;
 };
 
 

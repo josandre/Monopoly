@@ -20,3 +20,7 @@ SpotType Spot::getType() {
 string Spot::toString() {
     return this->getName();
 }
+
+Spot::~Spot() {
+
+}
