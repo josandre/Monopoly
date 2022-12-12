@@ -21,6 +21,10 @@ string Spot::toString() {
     return this->getName();
 }
 
+string Spot::toCsv() {
+    return this->getName() + "," + to_string(this->getType());
+}
+
 Spot::~Spot() {
 
 }

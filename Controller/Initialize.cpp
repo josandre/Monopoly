@@ -7,14 +7,15 @@
 #include "../Models/Free.h"
 #include "../Models/Jail.h"
 #include "BoardController.h"
-#include "../Models/SpecialCard.h"
 #include "../Core/List.cpp"
 #include "../Core/Queue.cpp"
 #include "../Core/Stack.cpp"
 #include "../Core/CircularList.cpp"
-#include "../Core/CircularList.h"
 #include "../Models/Tax.h"
 #include "../Models/Property.h"
+
+#include <fstream>
+#include <sstream>
 
 Initialize::Initialize() {}
 
@@ -35,14 +36,14 @@ void Initialize::InitializeTokens(List<Token> *tokens) {
 
 void Initialize::InitializeFortuneSpecialCards(Stack<SpecialCard> *Mainfortune) {
 
-        SpecialCard fortune1 = *new SpecialCard("Fortune", "Advance to the nearest service, if it is for sale you can buy it, otherwise you must pay the owner 10 times what it is worth", 0, Pay);
-        SpecialCard fortune2 = *new SpecialCard("Fortune", "advance to pier", 0, GoTo);
+        SpecialCard fortune1 = *new SpecialCard("Fortune", "Advance 3 spots", 3, Pay);
+        SpecialCard fortune2 = *new SpecialCard("Fortune", "advance 7 spots", 7, GoTo);
         SpecialCard fortune3 = *new SpecialCard("Fortune", "pay the speeding ticket", 15, 0, Pay);
-        SpecialCard fortune4 = *new SpecialCard("Fortune", "You have been elect as mayor, you have to pay 50 to every player", 50, 0, Pay);
+        SpecialCard fortune4 = *new SpecialCard("Fortune", "You have been elect as mayor, you have to pay 50", 50, 0, Pay);
         SpecialCard fortune5 = *new SpecialCard("Fortune", "You have to fix your houses, pay 25 for every house you have",25, 0, Pay);
         SpecialCard fortune6 = *new SpecialCard("Fortune", "You have to fix your hotels, pay 100 for every house you have",100, 0, Pay);
         SpecialCard fortune7 = *new SpecialCard("Fortune", "Go back 3 spaces", 3, GoTo);
-        SpecialCard fortune8 = *new SpecialCard("Fortune", "Go to San Carlos Square ", 0, GoTo);
+        SpecialCard fortune8 = *new SpecialCard("Fortune", "Advance 4 spots ahead ", 4, GoTo);
         SpecialCard fortune9 = *new SpecialCard("Fortune", "Advance to the nearest railway if it is for sale you can buy it, otherwise pay double the rent", 0, CalculatePay);
         SpecialCard fortune10 = *new SpecialCard("Fortune", "Ask the bank for 150 for loan compliance",150, 0, Collect);
         SpecialCard fortune11 = *new SpecialCard("Fortune", "get out of jail free", 0, ExitJail);
@@ -110,12 +111,12 @@ void Initialize::InitializeCommunalArkSpecialCard(Stack<SpecialCard> *MainComuna
 void Initialize::InitializeBoard(CircularList<Spot*> *board) {
     Tax *exit = new Tax("Exit", 200);
     Property *mediterraneanAvenue = new Property("Mediterranean Avenue",Brown ,60, 2,  30, 50, Common);
-    SpecialCard *communalArk1 = new SpecialCard("Communal Ark", CommunalArk);
+    SpecialCard *communalArk1 = new SpecialCard("Communal Ark 1", CommunalArk);
     Property *balticAvenue = new Property("Baltic Avenue", Brown , 60, 4,  30, 50,  Common);
     Tax *taxes = new Tax("Taxes over income", 200);
     Property *railRoadReading = new Property("Railroad Reading", None, 200, 25, 100, 0,  RailRoad);
     Property *orientalAvenue = new Property("Oriental Avenue", LightBlue, 100, 6, 50, 50, Common);
-    SpecialCard *fortune1 = new SpecialCard("Fortune", Fortune);
+    SpecialCard *fortune1 = new SpecialCard("Fortune 1", Fortune);
     Property *vermontAvenue = new Property("Vermont Avenue", LightBlue, 100, 6, 50, 50, Common);
     Property *connecticutAvenue = new Property("Connecticut Avenue", LightBlue, 120, 8, 60, 50, Common);
     Free *visitJail = new Free("Jail");
@@ -125,12 +126,12 @@ void Initialize::InitializeBoard(CircularList<Spot*> *board) {
     Property *virginiaAvenue = new Property("Virginia Avenue", Pink, 160, 12, 80, 100, Common);
     Property *railRoadPennsylvania = new Property("Railroad Pennsylvania", None, 200, 25, 100, 0,  RailRoad);
     Property *stJamesSquare = new Property("St. James Square", Orange, 180, 14, 90, 100, Common);
-    SpecialCard *communalArk2 = new SpecialCard("Communal Ark", CommunalArk);
+    SpecialCard *communalArk2 = new SpecialCard("Communal Ark 2", CommunalArk);
     Property *tennesseeAvenue = new Property("Tennessee Avenue", Orange, 180, 14, 90, 100, Common);
     Property *newYorkAvenue = new Property("New York Avenue", Orange, 200, 16, 100, 100, Common);
     Free *freeZone = new Free("Free zone");
     Property *kentuckyAvenue = new Property("Kentucky Avenue", Red, 220, 18, 110, 150, Common);
-    SpecialCard *fortune2 = new SpecialCard("Fortune", Fortune);
+    SpecialCard *fortune2 = new SpecialCard("Fortune 2", Fortune);
     Property *indianaAvenue = new Property("Indiana Avenue", Red, 220, 18, 110, 150, Common);
     Property *illinoisAvenue = new Property("Illinois Avenue", Red, 240, 20, 120, 150, Common);
     Property *railRoadBAndO = new Property("Railroad B & O", None, 200, 25, 100, 0,  RailRoad);
@@ -144,10 +145,10 @@ void Initialize::InitializeBoard(CircularList<Spot*> *board) {
 
     Property *pacificAvenue = new Property("Pacific Avenue", Green, 300, 26, 150, 200, Common);
     Property *northCarolineAvenue = new Property("North Caroline Avenue", Green, 300, 26, 150, 200, Common);
-    SpecialCard *communalArk3 = new SpecialCard("Communal Ark", CommunalArk);
+    SpecialCard *communalArk3 = new SpecialCard("Communal Ark 3", CommunalArk);
     Property *pennsylvaniaAvenue = new Property("Pennsylvania Avenue", Green, 320, 28, 160, 200, Common);
     Property *railRoadLine = new Property("Railroad Line", None, 200, 25, 100, 0,  RailRoad);
-    SpecialCard *fortune3 = new SpecialCard("Fortune", Fortune);
+    SpecialCard *fortune3 = new SpecialCard("Fortune 3", Fortune);
     Property *squaredPark = new Property("Squared Park", Blue, 350, 35, 175, 200, Common);
     Tax *luxuryTax = new Tax("Luxury tax", 100);
     Property *mayfair = new Property("Mayfair", Blue, 400, 50, 200, 200, Common);
@@ -193,10 +194,38 @@ void Initialize::InitializeBoard(CircularList<Spot*> *board) {
     board->add(mayfair);
 }
 
+void Initialize::InitializeRecords(List<Player> *records) {
+    string line;
+    ifstream RecordsFile("records.csv");
+    vector<string> row;
 
-void Initialize::InitializeGame(List<Token> *tokens, Stack<SpecialCard> *MainFortune, Stack<SpecialCard> *MainCommunalArk, CircularList<Spot*> *board) {
+    while (getline (RecordsFile, line)) {
+        row.clear();
+        stringstream str(line);
+        string column;
+
+        //Name,Token,Money,BlockMoves,Spot
+        while (getline(str, column, ',')) {
+            row.push_back(column);
+        }
+
+        string name = row[0];
+        Token *token = new Token(1, row[1]);
+        int money = stoi(row[2]);
+        int blockMoves = stoi(row[3]);
+        Spot* spot = new Spot(row[4], PropertyType);
+
+        Player player = *new Player(name, new Node<Spot*>(spot), money, blockMoves, *token, 0);
+        records->addDescendingByMoney(player);
+    }
+
+    RecordsFile.close();
+}
+
+void Initialize::InitializeGame(List<Token> *tokens, Stack<SpecialCard> *MainFortune, Stack<SpecialCard> *MainCommunalArk, CircularList<Spot*> *board, List<Player> *records) {
     this->InitializeTokens(tokens);
     this->InitializeFortuneSpecialCards(MainFortune);
     this->InitializeCommunalArkSpecialCard(MainCommunalArk);
     this->InitializeBoard(board);
+    this->InitializeRecords(records);
 }

@@ -16,6 +16,7 @@ public:
     virtual string getName();
     virtual SpotType getType();
     string toString();
+    string toCsv();
 
 protected:
     string name;

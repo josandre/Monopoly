@@ -15,11 +15,11 @@ using namespace std;
 void printPlayerInfo(Player* player) {
     cout << "=====================================" << endl;
     cout << "* " << player->getName() << "(" << player->getItem().getName() << ")" << "'s turn" << endl;
+    cout << "=====================================" << endl;
     cout << "* " << "Money: " << player->getMoney() << endl;
     cout << "* " << "Current position: " << player->getSpot()->getData()->getName() << endl;
     cout << "* " << "Blocked moves: " << player->getBlockMoves() << endl;
     cout << "=====================================" << endl << endl;
-
 }
 
 bool idToken(int tokenId){
@@ -43,7 +43,6 @@ Token validToken(int id, BoardController *board){
     return token;
 }
 
-
 void spotActionRepeat(Spot *spot, Player *player, BoardController *board){
     SpotType spotType = spot->getType();
 
@@ -52,13 +51,13 @@ void spotActionRepeat(Spot *spot, Player *player, BoardController *board){
             Property *property = dynamic_cast<Property*>(spot);
             if(player->getRound() > 0 && property->getOwner() == nullptr){
                 cout << "The property is available, if you want to buy it, Press(1) else Press any key" << endl;
-                int answer;
+                string answer;
                 cin >> answer;
 
                 int playerMoney = player->getMoney();
                 int propertyCost = property->getCost();
 
-                if(answer == 1 && playerMoney >= propertyCost){
+                if(answer == "1" && playerMoney >= propertyCost){
                     player->setMoney(playerMoney - propertyCost);
                     property->setOwner(player);
                     cout << "Congratulations!  You bought a new property, your properties are" << endl;
@@ -185,19 +184,21 @@ void spotAction(Spot *spot, Player *player, BoardController *board){
 
             if(player->getRound() >= 0 && property->getOwner() == nullptr){
                 cout << "The property is available, if you want to buy it, Press(1) else Press any key" << endl;
-                int answer;
+                string answer;
                 cin >> answer;
 
                 int playerMoney = player->getMoney();
                 int propertyCost = property->getCost();
 
-                if(answer == 1 && playerMoney >= propertyCost){
+                if(answer == "1" && playerMoney >= propertyCost){
                     player->setMoney(playerMoney - propertyCost);
                     property->setOwner(player);
                     cout << "Congratulations!  You bought a new property, your properties are" << endl;
                     cout << property->toString() << endl;
-
+                } else{
+                    cout << "You lost the property " << endl;
                 }
+
             }else if(property->getOwner() != nullptr) {
                 if(property->getOwner()->getItem().getName() != player->getItem().getName()) {
                     int rent = property->getRent();
@@ -234,88 +235,156 @@ void spotAction(Spot *spot, Player *player, BoardController *board){
 }
 
 
-void moving(BoardController *board){
-    int acum = 0;
-    string answer = "";
+void playTurn(BoardController *board){
     int diceAnswer;
     int firstDice;
     int secondDice;
-    while (acum < board->getPlayerInTurns()->getLength()){
-        Player *player = &board->getPlayerInTurns()->deQueue();
-        printPlayerInfo(player);
 
-        if(player->getBlockMoves() != 0){
-            cout << "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" << endl;
-            cout << "X       You are in the jail, you can't play until you leave!           X" << endl;
-            cout << "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" << endl;
+    Player *player = &board->getPlayerInTurns()->deQueue();
+    cout << endl << endl;
+    printPlayerInfo(player);
 
-            cout << "X       if you want, you can pay 50 to leave the jail, would you like to pay it? Press(1), else press any other key           X" << endl;
-            cout << "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" << endl << endl;
+    if(player->getBlockMoves() != 0){
+        cout << "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" << endl;
+        cout << "X       You are in the jail, you can't play until you leave!           X" << endl;
+        cout << "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" << endl;
 
-            int answer;
-            cin >> answer;
+        cout << "X       if you want, you can pay 50 to leave the jail, would you like to pay it? Press(1), else press any other key           X" << endl;
+        cout << "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" << endl << endl;
 
-            if(answer == 1){
-                player->setMoney(player->getMoney() - 50);
-                player->setBlockMoves(0);
-            } else{
-                player->setBlockMoves(player->getBlockMoves() - 1);
-            }
+        string answerToExitJail;
+        cin >> answerToExitJail;
 
-        } else {
-            cout << "Throw dice, press (Any key)" << endl;
-            cin >> answer;
-
-            firstDice = board->throwDice();
-            secondDice = board->throwDice();
-            diceAnswer = 1;//firstDice + secondDice;
-
-            cout << "=====================================" << endl;
-            cout << "* You got " << diceAnswer << "                         *" << endl;
-            cout << "=====================================" << endl << endl;
-
-            player->setSpot(board->getNewSpot(diceAnswer, player));
-
-            Spot *spot = player->getSpot()->getData();
-            spotAction(spot, player, board);
+        if(answerToExitJail == "1"){
+            player->setMoney(player->getMoney() - 50);
+            player->setBlockMoves(0);
+        } else{
+            player->setBlockMoves(player->getBlockMoves() - 1);
         }
 
-        board->getPlayerInTurns()->enQueue(*player);
+    } else {
+        string answer;
+        cout << "Throw dice, press (Any key)" << endl;
+        cin >> answer;
+
+        firstDice = board->throwDice();
+        secondDice = board->throwDice();
+        diceAnswer = firstDice + secondDice;
+
         cout << "=====================================" << endl;
-        cout << "* User info after turn:" << endl;
-        cout << "=====================================" << endl;
-        printPlayerInfo(player);
+        cout << "* You got " << diceAnswer << "                         *" << endl;
+        cout << "=====================================" << endl << endl;
+
+        player->setSpot(board->getNewSpot(diceAnswer, player));
+
+        Spot *spot = player->getSpot()->getData();
+        spotAction(spot, player, board);
     }
 
+    cout << "=====================================" << endl;
+    cout << "* User info after turn:" << endl;
+    printPlayerInfo(player);
+
+    board->getPlayerInTurns()->enQueue(*player);
 }
 
-void InitTurns(BoardController *board){
+void finishGame(BoardController *board) {
+    cout << "=====================================================================" << endl;
+    cout << "* Thanks for playing! Do you want to save the game for later? (y/n) *" << endl;
+    cout << "=====================================================================" << endl;
+    cout << "* Enter your answer: ";
+
+    string saveGame;
+    cin >> saveGame;
+
+    bool shouldSaveGame = saveGame == "y" || saveGame == "Y";
+
+    if(!shouldSaveGame) {
+        Player* winner = board->getWinner();
+        cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+        cout << "* The game is not going to be saved! *" << endl;
+        cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+        cout << "!!!!!!!!!! CONGRATULATIONS !!!!!!!!!!!" << endl;
+        cout << "* The winner is: " << winner->getName() << "(" << winner->getItem().getName() << ")" << endl;
+        cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+    }else {
+        cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+        cout << "* The game was saved successfully! *" << endl;
+        cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+    }
+
+    board->endGame(shouldSaveGame);
+}
+
+void gameMenu(BoardController *board) {
+    int option = 0;
+
+    while(option != 3) {
+        Player *player = &board->getPlayerInTurns()->getFront()->getData();
+
+        cout << "#####################################" << endl;
+        cout << "* " << player->getName() << "(" << player->getItem().getName() << ")" << " game menu" << endl;
+        cout << "#####################################" << endl;
+        cout << "* 1. Play your turn" << endl;
+        cout << "* 2. Exit game" << endl;
+        cout << "* 3. Finish the game for all players" << endl;
+        cout << "#####################################" << endl;
+        cout << "* Enter an option to continue: ";
+        cin >> option;
+
+        switch (option) {
+            case 1:
+                playTurn(board);
+                break;
+            case 2: {
+                int totalPlayers = board->getPlayerInTurns()->getLength();
+
+                if (totalPlayers - 1 < 2) {
+                    cout << "There are not enough players to play!!" << endl;
+                    finishGame(board);
+                    option = 3;
+                } else {
+                    board->getPlayerInTurns()->deQueue();
+                }
+
+                break;
+            }
+            case 3:
+                finishGame(board);
+                break;
+            default:
+                cout << "No correct option selected. Try again.";
+                break;
+        }
+    }
+}
+
+void InitTurns(BoardController *board, bool isNewGame){
     int length = board->getPlayers()->getLength();
     Node<Player> *playerNode = board->getPlayers()->getHead();
-
+    int acum = 0;
     cout << "=====================================" << endl;
 
-    int acum = 0;
     while (acum < length){
         Player player = playerNode->getData();
 
         cout << "* " << player.getName() << "(" << player.getItem().getName() << ")" << endl;
 
+        if(isNewGame) {
+            board->getPlayerInTurns()->enQueue(player);
+        }
 
-        board->getPlayerInTurns()->enQueue(player);
         acum ++;
         playerNode = playerNode->getNext();
     }
 
     cout << "=====================================" << endl << endl;
-
-    moving(board);
+    gameMenu(board);
 }
 
 
 
 void InitPlayers(int players, BoardController *board){
-
     CircularList<Spot*> *boardGame = board->getBoard();
 
     for(int i = 0; i < players; i++){
@@ -343,13 +412,11 @@ void InitPlayers(int players, BoardController *board){
 
     }
 
-    //cout << board->getPlayers()->toString() << endl;
     cout << "We're ready to start, this is the players order:" << endl;
-    InitTurns(board);
+    InitTurns(board, true);
 }
 
-void InitGame(){
-    auto *board = new BoardController();
+void InitGame(BoardController *board){
     cout << "How many players are going to play? (6 max)" << endl;
     int players;
     cin >> players;
@@ -359,10 +426,48 @@ void InitGame(){
     } else{
         InitPlayers(players, board);
     }
-
 }
 
-int main() {
-    InitGame();
+void mainMenu() {
+    auto *board = new BoardController();
 
+    cout << "##########################" << endl;
+    cout << "* Main Menu" << endl;
+    cout << "##########################" << endl;
+    cout << "* 1. Start new game" << endl;
+    cout << "* 2. Continue game" << endl;
+    cout << "* 3. See records" << endl;
+    cout << "* 4. Exit" << endl;
+    cout << "##########################" << endl;
+    cout << "* Enter an option to continue: ";
+    int option;
+    cin >> option;
+
+    switch (option) {
+        case 1:
+            InitGame(board);
+            break;
+        case 2:
+            board->loadGame();
+            cout << "=====================================" << endl;
+            cout << "* Game loaded. These are the turns! *" << endl;
+
+
+            InitTurns(board, false);
+            break;
+        case 3:
+            cout << board->getRecords() << endl;
+            break;
+        case 4:
+            cout << "Thanks for playing.";
+            exit(0);
+        default:
+            cout << "No correct option selected. Leaving the game";
+            exit(0);
+    }
+}
+
+
+int main() {
+    mainMenu();
 }

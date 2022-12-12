@@ -80,5 +80,5 @@ string Property::toString() {
     return "Name: " + this->name +  ", Color: " + to_string(this->color) + "," + ", Cost: " + to_string(this->cost) +
     ", Rent: " + to_string(this->rent) +  ", Houses: " + to_string(this->amountHouses) +  hotel  + ", Mortgage: " +
             to_string(this->mortgage) + ", Cost house: " + to_string(this->costHouse) + ", Cost hotel: " + to_string(this->costHotel) +
-            ", Cost unmortgage: " + to_string(this->costUnmortgage) + "Owner: " + this->owner->toString();
+            ", Cost unmortgage: " + to_string(this->costUnmortgage);
 }

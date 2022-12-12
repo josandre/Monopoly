@@ -80,3 +80,15 @@ string Player::toString() {
     " Money: " + to_string(this->money) + " Item: " + this->item.toString();
 }
 
+string Player::toCsv() {
+    /*
+         this->spot = spot;
+    this->money = money;
+    this->blockMoves = blockMoves;
+    this->item = item;
+    this->turn = turn;
+     * */
+
+    return this->name + "," + this->item.getName() + "," + to_string(this->money) + "," + to_string(this->blockMoves) + "," + this->spot->getData()->getName();
+}
+

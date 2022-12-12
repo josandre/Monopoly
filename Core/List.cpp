@@ -147,9 +147,45 @@ void List<T>::addDescending(T data) {
             aux = aux->getNext();
 
         }
-
     }
+}
+
+template<typename T>
+void List<T>::addDescendingByMoney(T data) {
+    Node<T> *nuevoNodo = new Node<T>(data);
+    Node<T> *aux = this->head;
 
 
+    if(this->head == nullptr){
+        this->head = nuevoNodo;
+        this->length ++;
+    } else{
+        while(aux != nullptr){
+            Node<T> *anterior = aux;
+            Node<T> *siguiente = anterior->getNext();
+
+            if(nuevoNodo->getData().getMoney() > this->head->getData().getMoney()){
+                addBeginning(data);
+                break;
+            } else{
+                if(aux->getNext() == nullptr){
+                    this->add(data);
+                    break;
+                } else{
+                    if((anterior->getData().getMoney() > nuevoNodo->getData().getMoney() &&
+                        siguiente->getData().getMoney() < nuevoNodo->getData().getMoney()) || (anterior->getData().getMoney() == nuevoNodo->getData().getMoney())){
+                        nuevoNodo->setNext(siguiente);
+                        siguiente->setBack(nuevoNodo);
+                        nuevoNodo->setBack(anterior);
+                        anterior->setNext(nuevoNodo);
+                        this->length ++;
+                        break;
+                    }
+                }
+            }
+            aux = aux->getNext();
+
+        }
+    }
 }
 

@@ -20,6 +20,7 @@ public:
     explicit Player(string, Node<Spot*>*, int, int, Token, int);
     explicit Player();
     string toString();
+    string toCsv();
     string getName();
     Node<Spot*> *getSpot();
     void setSpot(Node<Spot*>*);

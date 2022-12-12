@@ -82,11 +82,10 @@ T& Queue<T>::deQueue() {
     if(aux != nullptr){
         this->front = aux->getNext();
         T& data = aux->getData();
+        this->length--;
         delete aux;
         return data;
     }
-
-    this->length --;
 }
 
 

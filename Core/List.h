@@ -16,6 +16,7 @@ public:
     explicit List();
     bool add(T);
     void addDescending(T);
+    void addDescendingByMoney(T);
     string toString();
     T& findByIndex(int);
     Node<T> *getHead();

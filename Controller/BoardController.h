@@ -30,10 +30,15 @@ public:
     Node<Spot*> *getNewSpot(int, Player*);
     Node<Spot*> *getJail();
     Player* findPlayerByToken(Token);
+    void endGame(bool);
+    Player* getWinner();
+    string getRecords();
+    void loadGame();
 
 private:
     List<Token> *tokens;
     List<Player> *players;
+    List<Player> *records;
     Queue<Player> *playerTurns;
     Stack<SpecialCard> *Mainfortune;
     Stack<SpecialCard> *Secondfortune;
@@ -41,7 +46,13 @@ private:
     Stack<SpecialCard> *SecondComunalArk;
     CircularList<Spot*> *board;
     Node<Spot*> *jail;
-    void initializeJail();
+    Node<Spot*> *findSpotByName(string);
+    void saveRecords();
+    void saveGame();
+    void savePlayersState();
+    void saveGameBoardState();
+    void loadPlayersState();
+    void loadGameBoardState();
 };
 
 
